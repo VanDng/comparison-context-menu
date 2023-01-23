@@ -20,7 +20,7 @@ namespace ComparisonContextMenu
                     return;
                 }
 
-                string arg = $"diff {itemPathOne} {itemPathTwo}";
+                string arg = $"diff \"{itemPathOne}\" \"{itemPathTwo}\"";
                 Process.Start(riderPath, arg);
             }
             catch (Exception ex)
