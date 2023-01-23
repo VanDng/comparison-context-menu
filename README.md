@@ -18,9 +18,10 @@ The bad news is that it is a bit inconvenient to launch Rider diff feature from 
 
 I was inspired by Beyond Compare to create this repository to add a dynamic context menu for easily comparing files with Rider diff feature. Under the hood, it invokes the Rider diff feature via command line.
 
-It works for both files as well as folders.
+---
 
-Here some of my use cases.
+After installation completed, when you select files or folders, you should see the one or two new context menus with Rider icon according to the current context.
+
 - Select to compare.
 ![select-to-compare](./doc/select-to-compare.png "Select to compare")
 
