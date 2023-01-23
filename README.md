@@ -56,7 +56,7 @@ Example from the official document:
 srm config LoggingMode File
 srm config LogPath '%TEMP%\SharpShell.log'
 srm install <path.dll>
-srm config LoggingMode Disable
+srm config LoggingMode Disabled
 ```
 
 2/ Backup of Server Registration Manager Tool can be found on [the first release](https://github.com/VanDng/comparison-context-menu/releases/tag/first-release).
