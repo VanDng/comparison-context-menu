@@ -44,6 +44,15 @@ ServerRegistrationManager.exe install "C:\Program Files\ComparisonContextMenu\Co
 
 5/ Done.
 
+# Uninstallation
+
+1/ Open CMD with Admin rights, and execute the command below
+```
+ServerRegistrationManager.exe uninstall "C:\Program Files\ComparisonContextMenu\ComparisonContextMenu.dll"
+```
+
+2/ Restart Windows Explorer.
+
 # Reference
 
 1/ For any reason, the comparison context menu does not show up. You might need to check log for further investigation. Check these documents for getting logs.
