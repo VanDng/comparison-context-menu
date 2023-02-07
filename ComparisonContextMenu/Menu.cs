@@ -4,56 +4,49 @@ using System.Windows.Forms;
 using SharpShell.Attributes;
 using SharpShell.SharpContextMenu;
 
-namespace ComparisonContextMenu.Menus
+namespace ComparisonContextMenu
 {
     [ComVisible(true)]
-    [COMServerAssociation(AssociationType.AllFilesAndFolders)]
+    [COMServerAssociation(AssociationType.AllFiles)]
+    [COMServerAssociation(AssociationType.DesktopBackground)]
+    [COMServerAssociation(AssociationType.DirectoryBackground)]
     public class Menu : SharpContextMenu
     {
-        protected override bool CanShowMenu()
-        {
-            int selectedItemCount = SelectedItemPaths.Count();
-            return selectedItemCount == 1 || selectedItemCount == 2;
-        }
+        protected override bool CanShowMenu() => true;
 
         protected override ContextMenuStrip CreateMenu()
         {
-            //
-            // Prepare menu items
-            //
-
-            // Separator
-            ToolStripSeparator upperSeparator = new ToolStripSeparator();
-
-            // Compare
-            ToolStripMenuItem menuCompare = InitMenuCompare();
-
-            // Select to compare
-            ToolStripMenuItem menuSelectoToCompare = InitMenuSelectToCompare();
-
-            // Compare window
-            ToolStripMenuItem menuCompareWindow = InitMenuCompareWindow();
-
-            // Separator
-            ToolStripSeparator lowerSeparator = new ToolStripSeparator();
-
-            //
-            // Build the menu
-            //
+            object[] menuItems =
+            {
+                InitSeparator(),
+                InitMenuCompare(),
+                InitMenuSelectToCompare(),
+                InitMenuCompareWindow(),
+                InitSeparator()
+            };
 
             ContextMenuStrip menu = new ContextMenuStrip();
 
-            menu.Items.Add(upperSeparator);
-            if (menuCompare != null) menu.Items.Add(menuCompare);
-            if (menuSelectoToCompare != null) menu.Items.Add(menuSelectoToCompare);
-            menu.Items.Add(menuCompareWindow);
-            menu.Items.Add(lowerSeparator);
+            foreach (ToolStripItem menuItem in menuItems)
+            {
+                if (menuItem != null)
+                    menu.Items.Add(menuItem);
+            }
 
             return menu;
         }
 
+        private ToolStripSeparator InitSeparator()
+        {
+            return new ToolStripSeparator();
+        }
+
         private ToolStripMenuItem InitMenuCompare()
         {
+            if (SelectedItemPaths.Count() != 1 &&
+                SelectedItemPaths.Count() != 2)
+                return null;
+
             string firstPath = string.Empty, secondPath = string.Empty;
 
             if (SelectedItemPaths.Count() == 1)
@@ -123,5 +116,4 @@ namespace ComparisonContextMenu.Menus
             return selectToCompare;
         }
     }
-
 }
