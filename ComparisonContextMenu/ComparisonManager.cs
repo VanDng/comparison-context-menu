@@ -30,13 +30,12 @@ namespace ComparisonContextMenu
 
             int count =
                 new string[]
-                {
-                    pathOne,
-                    pathTwo
-                }
-                .Select(path => IsFolder(path))
-                .Where(isFolder => isFolder)
-                .Count();
+                    {
+                        pathOne,
+                        pathTwo
+                    }
+                .Select(IsFolder)
+                .Count(isFolder => isFolder);
 
             return count == 0 || count == 2;
         }
@@ -44,6 +43,11 @@ namespace ComparisonContextMenu
         public static void Compare(string pathOne, string pathTwo)
         {
             RiderExecutor.Execute(pathOne, pathTwo);
+        }
+
+        public static void ShowComparisionWindow()
+        {
+            RiderExecutor.Execute();
         }
 
         public static void ResetState()

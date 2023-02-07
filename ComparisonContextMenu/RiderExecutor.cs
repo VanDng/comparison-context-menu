@@ -2,6 +2,7 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 
 namespace ComparisonContextMenu
@@ -20,7 +21,13 @@ namespace ComparisonContextMenu
                     return;
                 }
 
-                string arg = $"diff \"{itemPathOne}\" \"{itemPathTwo}\"";
+                string fileArg = string.IsNullOrEmpty(itemPathOne) &&
+                                 string.IsNullOrEmpty(itemPathTwo)
+                                    ? string.Empty
+                                    : " \"{itemPathOne}\" \"{itemPathTwo}\"";
+
+                string arg = "diff" + fileArg;
+
                 Process.Start(riderPath, arg);
             }
             catch (Exception ex)
@@ -28,6 +35,11 @@ namespace ComparisonContextMenu
                 MessageBox.Show(TextConstants.RiderExecutionFail(LogManager.LogPath));
                 LogManager.WriteLine(ex);
             }
+        }
+
+        public static void Execute()
+        {
+            Execute(string.Empty, string.Empty);
         }
 
         private static string GetRiderPath()

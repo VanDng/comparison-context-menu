@@ -31,6 +31,9 @@ namespace ComparisonContextMenu.Menus
             // Select to compare
             ToolStripMenuItem menuSelectoToCompare = InitMenuSelectToCompare();
 
+            // Compare window
+            ToolStripMenuItem menuCompareWindow = InitMenuCompareWindow();
+
             // Separator
             ToolStripSeparator lowerSeparator = new ToolStripSeparator();
 
@@ -43,6 +46,7 @@ namespace ComparisonContextMenu.Menus
             menu.Items.Add(upperSeparator);
             if (menuCompare != null) menu.Items.Add(menuCompare);
             if (menuSelectoToCompare != null) menu.Items.Add(menuSelectoToCompare);
+            menu.Items.Add(menuCompareWindow);
             menu.Items.Add(lowerSeparator);
 
             return menu;
@@ -98,6 +102,22 @@ namespace ComparisonContextMenu.Menus
             selectToCompare.Click += (sender, args) =>
             {
                 ComparisonManager.SetFirstPath(SelectedItemPaths.First());
+            };
+
+            return selectToCompare;
+        }
+
+        private ToolStripMenuItem InitMenuCompareWindow()
+        {
+            ToolStripMenuItem selectToCompare = new ToolStripMenuItem()
+            {
+                Text = TextConstants.CompareWindow,
+                Image = Resources.rider.ToBitmap()
+            };
+
+            selectToCompare.Click += (sender, args) =>
+            {
+                ComparisonManager.ShowComparisionWindow();
             };
 
             return selectToCompare;
