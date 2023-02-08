@@ -5,7 +5,7 @@ namespace ComparisonContextMenu
         public const string SelectToCompare = "Select to compare";
         public const string Compare = "Compare";
         public const string CompareWindow = "Compare window";
-        public static string RiderPathBad(string configPath) => $"It seems Rider's path is not configured. Check out the config file at path {configPath}";
-        public static string RiderExecutionFail(string configPath) => $"Something went wrong. Check out the log file at path {configPath}";
+        public static string BadCompareToolConfig(string configPath) => $"Please check the compare tool path at path {configPath}";
+        public static string CompareExecutionFail(string configPath) => $"Something went wrong. Check out the log file at path {configPath}";
     }
 }

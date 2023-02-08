@@ -1,4 +1,3 @@
-using System.IO;
 using System.Linq;
 
 namespace ComparisonContextMenu
@@ -42,12 +41,12 @@ namespace ComparisonContextMenu
 
         public static void Compare(string pathOne, string pathTwo)
         {
-            RiderExecutor.Execute(pathOne, pathTwo);
+            CompareToolExecutor.Execute(pathOne, pathTwo);
         }
 
         public static void ShowComparisionWindow()
         {
-            RiderExecutor.Execute();
+            CompareToolExecutor.Execute();
         }
 
         public static void ResetState()

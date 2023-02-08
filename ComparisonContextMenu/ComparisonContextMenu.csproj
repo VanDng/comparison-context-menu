@@ -48,7 +48,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppDataManager.cs" />
+    <Compile Include="AppConfigManager.cs" />
+    <Compile Include="ArgConstants.cs" />
     <Compile Include="ComparisonDataManager.cs" />
     <Compile Include="ComparisonManager.cs" />
     <Compile Include="BaseConfigurationManager.cs" />
@@ -60,7 +61,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="RiderExecutor.cs" />
+    <Compile Include="CompareToolExecutor.cs" />
+    <Compile Include="Rider.cs" />
     <Compile Include="TextConstants.cs" />
     <Compile Include="Utility.cs" />
   </ItemGroup>

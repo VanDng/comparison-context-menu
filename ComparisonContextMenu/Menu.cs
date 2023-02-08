@@ -14,6 +14,11 @@ namespace ComparisonContextMenu
     {
         protected override bool CanShowMenu() => true;
 
+        public Menu()
+        {
+            AppConfigManager.SetDefaultIfEmpty();
+        }
+
         protected override ContextMenuStrip CreateMenu()
         {
             object[] menuItems =
